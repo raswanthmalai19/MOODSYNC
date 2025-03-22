@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoodSync AI - Personalized Content Recommendations</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="ss.css">
+</head>
+<body class="dashboard-page">
+    <!-- Top Navigation -->
+    <nav class="top-nav">
+        <div class="nav-brand">
+            <h1><span class="highlight">Mood</span>Sync</h1>
+            <p>Get personalized content recommendations based on your mood</p>
+        </div>
+        
+        <div class="nav-links">
+           
+            <a href="chat.html"><i class="fas fa-compass"></i>chatbot</a>
+            <a href="about.html"><i class="fas fa-info-circle"></i> About</a>
+        </div>
+        
+        <div class="nav-right">
+            <div class="search-bar">
+                <input type="text" placeholder="Search...">
+                <button><i class="fas fa-search"></i></button>
+            </div>
+            
+            <div class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i>
+            </div>
+            
+            <div class="user-profile" id="userProfileDropdown">
+                <h1>RK</h1>
+                <div class="user-dropdown">
+                    <a href="loginpage.html"><i class="fas fa-user"></i> Profile</a>
+                    <a href="settings.html"><i class="fas fa-cog"></i> Settings</a>
+                    <a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <div class="main-container">
+        <!-- Left Sidebar with Analytics -->
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3>Mood History</h3>
+                <div class="mood-chart">
+                    <canvas id="moodChart"></canvas>
+                </div>
+                <div class="mood-summary">
+                    <div class="summary-item">
+                        <div class="summary-label">Weekly mood</div>
+                        <div class="summary-value">Mostly Happy</div>
+                    </div>
+                    <div class="summary-item">
+                        <div class="summary-label">Mood streak</div>
+                        <div class="summary-value">5 days</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>Content Stats</h3>
+                <div class="content-stats">
+                    <div class="stat-item">
+                        <i class="fas fa-video"></i>
+                        <div class="stat-info">
+                            <span>23</span>
+                            <p>Videos</p>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-music"></i>
+                        <div class="stat-info">
+                            <span>47</span>
+                            <p>Songs</p>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-podcast"></i>
+                        <div class="stat-info">
+                            <span>12</span>
+                            <p>Podcasts</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="sidebar-section">
+                <h3>Favorite Content</h3>
+                <ul class="favorites-list">
+                    <li>
+                        <img src="https://via.placeholder.com/30" alt="Content">
+                        <span>Relaxing Beats Mix</span>
+                    </li>
+                    <li>
+                        <img src="https://via.placeholder.com/30" alt="Content">
+                        <span>Motivational Podcast #42</span>
+                    </li>
+                    <li>
+                        <img src="https://via.placeholder.com/30" alt="Content">
+                        <span>Happy Vlog Compilation</span>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+
+        <div class="content-area">
+            <div class="welcome-section">
+                <div class="welcome-message">
+                    <h2>Welcome back, <span class="user-name">Raswanth</span>!</h2>
+                    <p>How are you feeling today?</p>
+                </div>
+                <div class="user-avatar">
+                    <h1>☺️</h1>
+                    
+             
+                </div>
+            </div>
+
+            <div class="chat-container glass-card">
+                <div class="chat-box" id="chatBox">
+                    <div class="message bot">
+                        <div class="message-avatar">
+                            <h1>🤖</h1>
+                        </div>
+                        <div class="message-content">
+                            Hi Alex! How are you feeling today? I can recommend content based on your mood.
+                        </div>
+                    </div>
+                    <!-- Chat messages will appear here -->
+                </div>
+
+                <div class="mood-buttons">
+                    <button class="mood-btn" data-mood="happy">😊 Happy</button>
+                    <button class="mood-btn" data-mood="sad">😢 Sad</button>
+                    <button class="mood-btn" data-mood="relaxed">😌 Relaxed</button>
+                    <button class="mood-btn" data-mood="energetic">⚡ Energetic</button>
+                    <button class="mood-btn" data-mood="focused">🧠 Focused</button>
+                    <button class="mood-btn" data-mood="romantic">❤️ Romantic</button>
+                    <button class="mood-btn" data-mood="sleepy">🥱 Sleepy</button>
+                </div>
+
+                <div class="input-container">
+                    <button id="resetBtn" class="btn btn-reset" title="Reset Chat">
+                        <i class="fas fa-redo"></i>
+                    </button>
+                    <input type="text" id="userInput" placeholder="Or describe how you're feeling...">
+                    <button id="sendBtn"><i class="fas fa-paper-plane"></i></button>
+                    <button id="voiceInputBtn" class="btn btn-voice" title="Voice Input">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div class="recommendations-container glass-card">
+                <div class="recommendations-header">
+                    <h2>Your Recommendations</h2>
+                    <div class="header-actions">
+                        <button class="btn-refresh" title="Refresh Recommendations">
+                            <i class="fas fa-sync-alt"></i>
+                        </button>
+                        <div class="view-selector">
+                            <button class="view-btn active" data-view="grid">
+                                <i class="fas fa-th"></i>
+                            </button>
+                            <button class="view-btn" data-view="list">
+                                <i class="fas fa-list"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="tabs">
+                    <button class="tab-btn active" data-tab="videos">
+                        <i class="fas fa-video"></i> Videos
+                    </button>
+                    <button class="tab-btn" data-tab="music">
+                        <i class="fas fa-music"></i> Music
+                    </button>
+                    <button class="tab-btn" data-tab="podcasts">
+                        <i class="fas fa-podcast"></i> Podcasts
+                    </button>
+                    <button class="tab-btn" data-tab="all">
+                        <i class="fas fa-globe"></i> All
+                    </button>
+                </div>
+                
+                <div class="recommendations grid-view" id="recommendations">
+                    <!-- Recommendations will appear here -->
+                    <div class="loading-placeholder">
+                        <div class="loading-animation">
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                            <div class="dot"></div>
+                        </div>
+                        <p>Share your mood to get personalized recommendations</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="main-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>MoodSync AI</h3>
+                <p>Personalized content recommendations based on your mood</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </div>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="discover.html">Discover</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <ul>
+                    <li><a href="terms.html">Terms of Service</a></li>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="cookies.html">Cookie Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2025 MoodSync AI. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Notification Container -->
+    <div class="notification-container"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chart.js/3.7.0/chart.min.js"></script>
+    <script src="app.js"></script>
+    <script src="dashboard.js"></script>
+</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MoodSync AI - Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body class="auth-page">
+    <div class="auth-container">
+        <div class="auth-banner">
+            <div class="auth-overlay"></div>
+            <div class="auth-content">
+                <h1><span class="highlight">Mood</span>Sync</h1>
+                <p>Your personal content companion</p>
+                <div class="auth-features">
+                    <div class="feature">
+                        <i class="fas fa-brain"></i>
+                        <span>AI-powered recommendations</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-history"></i>
+                        <span>Mood tracking history</span>
+                    </div>
+                    <div class="feature">
+                        <i class="fas fa-bookmark"></i>
+                        <span>Save favorite content</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="auth-form-container">
+            <div class="auth-form-wrapper">
+                <div class="auth-tabs">
+                    <button class="auth-tab active" data-tab="login">Login</button>
+                    <button class="auth-tab" data-tab="register">Register</button>
+                </div>
+                
+                <div class="auth-form active" id="login-form">
+                    <h2>Welcome Back</h2>
+                    <p>Sign in to continue your mood journey</p>
+                    
+                    <form>
+                        <div class="form-group">
+                            <label for="login-email">Email</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="login-email" placeholder="Enter your email">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="login-password" placeholder="Enter your password">
+                            </div>
+                        </div>
+                        
+                        <div class="form-options">
+                            <label class="remember-me">
+                                <input type="checkbox">
+                                <span>Remember me</span>
+                            </label>
+                            <a href="#" class="forgot-password">Forgot password?</a>
+                        </div>
+                        
+                        <button type="button" class="btn btn-primary btn-block" id="login-btn">Login</button>
+                    </form>
+                    
+                    <div class="social-login">
+                        <p>Or login with</p>
+                        <div class="social-buttons">
+                            <button class="social-btn google">
+                                <i class="fab fa-google"></i>
+                            </button>
+                            <button class="social-btn facebook">
+                                <i class="fab fa-facebook-f"></i>
+                            </button>
+                            <button class="social-btn twitter">
+                                <i class="fab fa-twitter"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="auth-form" id="register-form">
+                    <h2>Create Account</h2>
+                    <p>Join MoodSync and discover personalized content</p>
+                    
+                    <form>
+                        <div class="form-group">
+                            <label for="register-name">Full Name</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="register-name" placeholder="Enter your full name">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="register-email">Email</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="register-email" placeholder="Enter your email">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="register-password">Password</label>
+                            <div class="input-with-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="register-password" placeholder="Create a password">
+                            </div>
+                        </div>
+                        
+                        <div class="form-terms">
+                            <label class="terms-checkbox">
+                                <input type="checkbox">
+                                <span>I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a></span>
+                            </label>
+                        </div>
+                        
+                        <button type="button" class="btn btn-primary btn-block" id="register-btn">Create Account</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="auth.js"></script>
+</body>
+</html>
